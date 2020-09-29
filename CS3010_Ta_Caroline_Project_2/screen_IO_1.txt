@@ -1,0 +1,47 @@
+Would you like to input the matrix through command line or text file?
+[0] - Exit the Program
+[1] - Command Line
+[2] - Text File
+
+Enter choice: 1
+
+Enter the number of equations: 3
+
+Enter the coefficients:
+5 -1 0 7
+-1 3 -1 4
+0 -1 2 5
+
+Enter the desired stopping error: 0.4
+
+Enter the starting solution: 0 0 0
+
+We have the following matrix:
+ 5	-1	 0	 7	
+-1	 3	-1	 4	
+ 0	-1	 2	 5	
+
+-----------------------------------------------------------------
+                   JACOBI ITERATIVE METHOD
+-----------------------------------------------------------------
+
+Iteration #1:	[1.4  1.33333  2.5] T
+Error: 1 < 0.4 (False)
+
+Iteration #2:	[1.66667  2.63333  3.16667] T
+Error: 0.484061 < 0.4 (False)
+
+Iteration #3:	[1.92667  2.94444  3.81667] T
+Error: 0.302472 < 0.4 (True)
+
+-----------------------------------------------------------------
+                     GAUSS-SEIDEL METHOD
+-----------------------------------------------------------------
+
+Iteration #1:	[1.4  1.8  3.4] T
+Error: 1 < 0.4 (False)
+
+Iteration #2:	[1.76  3.05333  4.02667] T
+Error: 0.270368 < 0.4 (True)
+
+Thank you for using the program!
