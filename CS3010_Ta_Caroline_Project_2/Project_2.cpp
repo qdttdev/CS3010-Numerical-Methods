@@ -510,7 +510,9 @@ int main()
 
 	cout.unsetf(ios::fixed);
 
-	cout << "\nThank you for using the program!\n";
+	cout << "\nThank you for using the program! [Press enter to Close the Program]\n";
+
+	cin.get();
 
 	return 0;
 }
