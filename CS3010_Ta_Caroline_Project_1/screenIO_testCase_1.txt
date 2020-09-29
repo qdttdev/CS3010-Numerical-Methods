@@ -1,0 +1,55 @@
+
+*******************************************************************************
+* Name:       Caroline Ta
+* Date:       09.25.2020
+* Class:      CS3010.01 - Numerical Methods
+* Assignment: Programming Project 1 - Gaussian Elimination Partial Pivoting
+*******************************************************************************
+
+Would you like to input the matrix through command line or text file?
+[0] - Exit the Program
+[1] - Command Line
+[2] - Text File
+
+Enter choice: 2
+
+Enter file name: testCase_1.txt
+
+Enter the number of equations: 3
+
+Scale vectors: s = [3, 2, 3]
+
+Ratio: r = {0.67, 0.50, 1.00}
+The largest ratio found is 1.00 so we choose R3 and swap with R1
+
+The matrix after R1 <-> R3
+3.00	0.00	2.00	9.00	
+-1.00	2.00	-1.00	0.00	
+2.00	3.00	0.00	8.00	
+
+The matrix after scaled partial pivoting:
+3.00	0.00	2.00	9.00	
+0.00	2.00	-0.33	3.00	
+0.00	3.00	-1.33	2.00	
+
+Scale vectors: s = [3, 2, 3]
+
+Ratio: r = {1.00, 1.00}
+The largest ratio found is 1.00 so we choose R2 and swap with R2 (matrix stays the same)
+
+The matrix after R2 <-> R2
+3.00	0.00	2.00	9.00	
+0.00	2.00	-0.33	3.00	
+0.00	3.00	-1.33	2.00	
+
+The matrix after scaled partial pivoting:
+3.00	0.00	2.00	9.00	
+0.00	2.00	-0.33	3.00	
+0.00	0.00	-0.83	-2.50	
+
+The solution of the matrix:
+x1 = 1.00
+x2 = 2.00
+x3 = 3.00
+
+Thank you for using the program!

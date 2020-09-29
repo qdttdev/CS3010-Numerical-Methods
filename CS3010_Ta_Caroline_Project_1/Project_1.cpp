@@ -2,7 +2,7 @@
  * Name:		Caroline Ta
  * ID:			014 939 652
  * Date:		09.25.2020
- * Class:		CS3010.01
+ * Class:		CS3010.01 - Numerical Methods
  * Assignment:	Programming Project 1 - Gaussian Elimination Partial Pivoting
  *******************************************************************************/
 
@@ -32,11 +32,17 @@ int main()
 	int maxRatioPos = 0;
 	fstream f;
 
-	vector<char> solVar = {'x','y','z','u','v','o','p'};
 	vector<double> solution(MAX_ROW, 0);
 	vector<int> maxOfRow(MAX_ROW, 0);
 	vector<double> ratio(MAX_COL, 0);
 	vector<vector<double>> matrix(MAX_ROW, vector<double>(MAX_COL, 0));
+
+	cout << "\n*******************************************************************************"
+		 << "\n* Name:       Caroline Ta"
+		 << "\n* Date:       09.25.2020"
+		 << "\n* Class:      CS3010.01 - Numerical Methods"
+		 << "\n* Assignment: Programming Project 1 - Gaussian Elimination Partial Pivoting"
+		 << "\n*******************************************************************************\n\n";
 
 	cout << "Would you like to input the matrix through command line or text file?\n"
 		 << "[0] - Exit the Program\n"
@@ -92,6 +98,8 @@ int main()
 				}
 			}
 		}
+
+		f.close();
 	}
 
 	cout << setprecision(2) << fixed;
@@ -230,7 +238,7 @@ int main()
 	cout << "\nThe solution of the matrix:" << endl;
 	for(int i = 0; i < row; i++)
 	{
-		cout << solVar[i] << " = " << round(solution[i]) << endl;
+		cout << "x" << i+1 << " = " << round(solution[i]) << endl;
 	}
 
 	cout << "\nThank you for using the program!\n";
