@@ -241,7 +241,10 @@ int main()
 		cout << "x" << i+1 << " = " << round(solution[i]) << endl;
 	}
 
-	cout << "\nThank you for using the program!\n";
+	cout << "\nThank you for using the program! [Press Enter to Close the Program]\n";
+
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 
 	return 0;
 }
