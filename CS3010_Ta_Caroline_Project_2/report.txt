@@ -1,0 +1,24 @@
+TEST CASE: 4 Equations
+It took the program 0.00099799999999999997 seconds to execute Jacobi Iterative Method.
+It took the program 0.00000000000000000000 seconds to execute Gauss-Seidel Method.
+It took the program 0.00307299999999999978 seconds to execute Gaussian Elimination with Partial Pivoting Method.
+
+TEST CASE: 20 Equations
+It took the program 0.01951899999999999816 seconds to execute Jacobi Iterative Method.
+It took the program 0.01342799999999999896 seconds to execute Gauss-Seidel Method.
+It took the program 0.14856700000000000461 seconds to execute Gaussian Elimination with Partial Pivoting Method.
+
+TEST CASE: 50 Equations
+It took the program 0.04587499999999999911 seconds to execute Jacobi Iterative Method.
+It took the program 0.00997299999999999923 seconds to execute Gauss-Seidel Method.
+It took the program 2.26366500000000003823 seconds to execute Gaussian Elimination with Partial Pivoting Method.
+
+TEST CASE: 70 Equations
+It took the program 0.04826199999999999934 seconds to execute Jacobi Iterative Method.
+It took the program 0.01257299999999999911 seconds to execute Gauss-Seidel Method.
+It took the program 6.09576099999999954093 seconds to execute Gaussian Elimination with Partial Pivoting Method.
+
+TEST CASE: 100 Equations
+It took the program 0.08178099999999999259 seconds to execute Jacobi Iterative Method.
+It took the program 0.03091799999999999757 seconds to execute Gauss-Seidel Method.
+It took the program 17.78306299999999851025 seconds to execute Gaussian Elimination with Partial Pivoting Method.

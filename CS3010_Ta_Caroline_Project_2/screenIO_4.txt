@@ -1,0 +1,140 @@
+
+*******************************************************************************
+* Name:       Caroline Ta
+* Date:       09.28.2020
+* Class:      CS3010.01 - Numerical Methods
+* Assignment: Programming Project 2 - Jacobi & Gaussian-Seidel (Extra Credit)
+*******************************************************************************
+
+Would you like to input the matrix through command line or text file?
+[0] - Exit the Program
+[1] - Command Line
+[2] - Text File
+
+Enter choice: 1
+
+Enter the number of equations: 4
+
+Enter the coefficients:
+7 1 -1 2 3
+1 8 0 -2 -5
+-1 0 4 -1 4
+2 -2 -1 6 -3
+
+Enter the desired stopping error: 0.4
+
+Enter the starting solution: 0 0 0 0
+
+We have the following matrix:
+ 7	 1	-1	 2	 3	
+ 1	 8	 0	-2	-5	
+-1	 0	 4	-1	 4	
+ 2	-2	-1	 6	-3	
+
+-----------------------------------------------------------------
+                   JACOBI ITERATIVE METHOD
+-----------------------------------------------------------------
+
+Iteration #1:	[0.428571  -0.625  1  -0.5] T
+Error: 1 < 0.4 (False)
+
+Iteration #2:	[0.803571  -0.803571  0.982143  -0.684524] T
+Error: 0.618217 < 0.4 (False)
+
+Iteration #3:	[0.879252  -0.896577  1.02976  -0.872024] T
+Error: 0.489871 < 0.4 (False)
+
+Iteration #4:	[0.952912  -0.952912  1.00181  -0.920316] T
+Error: 0.43836 < 0.4 (False)
+
+Iteration #5:	[0.970764  -0.974193  1.00815  -0.968307] T
+Error: 0.413544 < 0.4 (False)
+
+Iteration #6:	[0.988422  -0.988422  1.00061  -0.980294] T
+Error: 0.40198 < 0.4 (False)
+
+Iteration #7:	[0.992804  -0.993626  1.00203  -0.992179] T
+Error: 0.396077 < 0.4 (True)
+
+[Press Enter to Continue: Gauss-Seidel Method]
+
+-----------------------------------------------------------------
+                     GAUSS-SEIDEL METHOD
+-----------------------------------------------------------------
+
+Iteration #1:	[0.428571  -0.678571  1.10714  -0.684524] T
+Error: 1 < 0.4 (False)
+
+Iteration #2:	[0.879252  -0.906037  1.04868  -0.920316] T
+Error: 0.297735 < 0.4 (True)
+
+[Press Enter to Continue: Gaussian Elimination with Scaled Partial Pivoting]
+
+-----------------------------------------------------------------
+          GAUSS ELIMINATION WITH SCALED PARTIAL PIVOTING
+-----------------------------------------------------------------
+
+Scale vectors: s = [7, 8, 4, 6]
+
+Ratio: r = {1.00, 0.12, 0.25, 0.33}
+The largest ratio found is 1.00 so we choose R1 and swap with R1 (matrix stays the same)
+
+The matrix after R1 <-> R1
+7.00	1.00	-1.00	2.00	3.00	
+1.00	8.00	0.00	-2.00	-5.00	
+-1.00	0.00	4.00	-1.00	4.00	
+2.00	-2.00	-1.00	6.00	-3.00	
+
+The matrix after scaled partial pivoting:
+7.00	1.00	-1.00	2.00	3.00	
+0.00	7.86	0.14	-2.29	-5.43	
+0.00	0.14	3.86	-0.71	4.43	
+0.00	-2.29	-0.71	5.43	-3.86	
+
+Scale vectors: s = [7, 8, 4, 6]
+
+Ratio: r = {0.98, 0.04, 0.38}
+The largest ratio found is 0.98 so we choose R2 and swap with R2 (matrix stays the same)
+
+The matrix after R2 <-> R2
+7.00	1.00	-1.00	2.00	3.00	
+0.00	7.86	0.14	-2.29	-5.43	
+0.00	0.14	3.86	-0.71	4.43	
+0.00	-2.29	-0.71	5.43	-3.86	
+
+The matrix after scaled partial pivoting:
+7.00	1.00	-1.00	2.00	3.00	
+0.00	7.86	0.14	-2.29	-5.43	
+0.00	0.00	3.85	-0.67	4.53	
+0.00	0.00	-0.67	4.76	-5.44	
+
+Scale vectors: s = [7, 8, 4, 6]
+
+Ratio: r = {0.96, 0.11}
+The largest ratio found is 0.96 so we choose R3 and swap with R3 (matrix stays the same)
+
+The matrix after R3 <-> R3
+7.00	1.00	-1.00	2.00	3.00	
+0.00	7.86	0.14	-2.29	-5.43	
+0.00	0.00	3.85	-0.67	4.53	
+0.00	0.00	-0.67	4.76	-5.44	
+
+The matrix after scaled partial pivoting:
+7.00	1.00	-1.00	2.00	3.00	
+0.00	7.86	0.14	-2.29	-5.43	
+0.00	0.00	3.85	-0.67	4.53	
+0.00	0.00	0.00	4.65	-4.65	
+
+The solution of the matrix:
+x1 = 1.00
+x2 = -1.00
+x3 = 1.00
+x4 = -1.00
+
+It took the program 0.00103199999999999993 seconds to execute Jacobi Iterative Method.
+
+It took the program 0.00099700000000000006 seconds to execute Gauss-Seidel Method.
+
+It took the program 0.00399199999999999989 seconds to execute Gaussian Elimination with Scaled Partial Pivoting Method.
+
+Thank you for using the program!
