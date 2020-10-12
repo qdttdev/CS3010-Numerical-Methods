@@ -63,8 +63,8 @@ public class Equations
     static double Equation100(double x)
     {
         // 9x^4 + 18x^3 + 38x^2 - 57x + 14
-        // 36x^3 + 54x^2 + 76x + 57
-        return 36*Math.pow(x,3) + 54*Math.pow(x,2) + 76*x + 57;
+        // 36x^3 + 54x^2 + 76x - 57
+        return 36*Math.pow(x,3) + 54*Math.pow(x,2) + 76*x - 57;
     }
 
     static double Equation1(double x)
