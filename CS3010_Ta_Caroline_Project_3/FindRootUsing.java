@@ -3,10 +3,20 @@ import static com.company.Equations.*;
 
 public class FindRootUsing
 {
-    public static void Bisection(double a_n, double b_n, int equation)
+    public static int MAX_ITERATIONS = 100;
+    public static double ERROR = 0.01;
+    public static String SMALL_BORDER = "****************************************************";
+    public static String BORDER = "---------------------------------------------------------------------------------------------------";
+    public static String BISECTION_METHOD = "                 BISECTION METHOD";
+    public static String FALSE_POSITION_METHOD = "               FALSE POSITION METHOD";
+    public static String NEWTON_RAPHSON_METHOD = "               NEWTON RAPHSON METHOD";
+    public static String SECANT_METHOD = "                   SECANT METHOD";
+    public static String MODIFIED_SECANT_METHOD = "              MODIFIED SECANT METHOD";
+    public static String COL_FORMAT = "%3s%12s%12s%12s%12s%12s%12s%12s%12s\n";
+
+    public static void Bisection(double a_n, double b_n, int equation, double trueRoot)
     {
-        final int MAX_ITERATIONS = 100;
-        double a, b, c, fa, fb, fc, e, cPrev;
+        double a, b, c, fa, fb, fc, approxErr, trueErr, cPrev;
 
         a = a_n;
         b = b_n;
@@ -16,13 +26,14 @@ public class FindRootUsing
         fb = Equation_(b,equation);
         fc = Equation_(c,equation);
 
-        System.out.println("****************************************************");
-        System.out.println("                 BISECTION METHOD");
-        System.out.println("****************************************************");
-        System.out.println();
+        trueErr = calculateTrueError(trueRoot, c);
 
-        System.out.printf("%3s%12s%12s%12s%12s%12s%12s%12s\n","n","a","b","c","f(a)","f(b)","f(c)","e");
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println(SMALL_BORDER);
+        System.out.println(BISECTION_METHOD);
+        System.out.println(SMALL_BORDER);
+
+        System.out.printf(COL_FORMAT,"n","a_n","b_n","c_n","f(a_n)","f(b_n)","f(c_n)","approx e","true e");
+        System.out.println(BORDER);
         System.out.printf("%3d", 0);
         System.out.printf("%12.4f", a);
         System.out.printf("%12.4f", b);
@@ -30,7 +41,8 @@ public class FindRootUsing
         System.out.printf("%12.4f", fa);
         System.out.printf("%12.4f", fb);
         System.out.printf("%12.4f", fc);
-        System.out.printf("%12s\n","N/A");
+        System.out.printf("%12s","N/A");
+        System.out.printf("%12.4f\n",trueErr);
 
         for(int i = 0; i < MAX_ITERATIONS; i++)
         {
@@ -52,7 +64,8 @@ public class FindRootUsing
             fa = Equation_(a,equation);
             fb = Equation_(b,equation);
             fc = Equation_(c,equation);
-            e = calculateError(c, cPrev);
+            approxErr = calculateApproxError(c, cPrev);
+            trueErr = calculateTrueError(trueRoot, c);
 
             System.out.printf("%3d", i+1);
             System.out.printf("%12.4f", a);
@@ -61,19 +74,19 @@ public class FindRootUsing
             System.out.printf("%12.4f", fa);
             System.out.printf("%12.4f", fb);
             System.out.printf("%12.4f", fc);
-            System.out.printf("%12.4f\n", e);
+            System.out.printf("%12.4f", approxErr);
+            System.out.printf("%12.4f\n", trueErr);
 
-            if(e < 0.01)
+            if(approxErr < ERROR)
             {
                 break;
             }
         }
     }
 
-    public static void FalsePosition(double a_n, double b_n, int equation)
+    public static void FalsePosition(double a_n, double b_n, int equation, double trueRoot)
     {
-        final int MAX_ITERATIONS = 100;
-        double a, b, c, fa, fb, fc, e, cPrev;
+        double a, b, c, fa, fb, fc, approxErr, trueErr, cPrev;
 
         a = a_n;
         b = b_n;
@@ -83,13 +96,14 @@ public class FindRootUsing
         c = calculateC_FalsePosition(a,b,fa,fb);
         fc = Equation_(c,equation);
 
-        System.out.println("****************************************************");
-        System.out.println("               FALSE POSITION METHOD");
-        System.out.println("****************************************************");
-        System.out.println();
+        trueErr = calculateTrueError(trueRoot, c);
 
-        System.out.printf("%3s%12s%12s%12s%12s%12s%12s%12s\n","n","a","b","f(a)","f(b)","c","f(c)","e");
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println(SMALL_BORDER);
+        System.out.println(FALSE_POSITION_METHOD);
+        System.out.println(SMALL_BORDER);
+
+        System.out.printf(COL_FORMAT,"n","a_n","b_n","f(a_n)","f(b_n)","c_n","f(c_n)","approx e","true e");
+        System.out.println(BORDER);
         System.out.printf("%3d", 0);
         System.out.printf("%12.4f", a);
         System.out.printf("%12.4f", b);
@@ -97,7 +111,8 @@ public class FindRootUsing
         System.out.printf("%12.4f", fb);
         System.out.printf("%12.4f", c);
         System.out.printf("%12.4f", fc);
-        System.out.printf("%12s\n","N/A");
+        System.out.printf("%12s","N/A");
+        System.out.printf("%12.4f\n", trueErr);
 
         for(int i = 0; i < MAX_ITERATIONS; i++)
         {
@@ -120,7 +135,8 @@ public class FindRootUsing
             c = calculateC_FalsePosition(a,b,fa,fb);
             fc = Equation_(c,equation);
 
-            e = calculateError(c, cPrev);
+            approxErr = calculateApproxError(c, cPrev);
+            trueErr = calculateTrueError(trueRoot, c);
 
             System.out.printf("%3d", i+1);
             System.out.printf("%12.4f", a);
@@ -129,21 +145,21 @@ public class FindRootUsing
             System.out.printf("%12.4f", fb);
             System.out.printf("%12.4f", c);
             System.out.printf("%12.4f", fc);
-            System.out.printf("%12.4f\n", e);
+            System.out.printf("%12.4f", approxErr);
+            System.out.printf("%12.4f\n", trueErr);
 
-            if(e < 0.01)
+            if(approxErr < ERROR)
             {
                 break;
             }
         }
     }
 
-    public static void NewtonRaphson(double x_0, int equation)
+    public static void NewtonRaphson(double x_0, int equation, double trueRoot)
     {
-        final int MAX_ITERATIONS = 100;
         double x_n, fx_n, fx_n_Not;
         double x_nPlus1, fx_nPlus1, fx_nPlus1_Not;
-        double e;
+        double approxErr, trueErr;
 
         x_n = x_0;
         fx_n = Equation_(x_n,equation);
@@ -153,13 +169,15 @@ public class FindRootUsing
         fx_nPlus1 = Equation_(x_nPlus1,equation);
         fx_nPlus1_Not = Equation_(x_nPlus1,equation+100);
 
-        System.out.println("****************************************************");
-        System.out.println("               NEWTON RAPHSON METHOD");
-        System.out.println("****************************************************");
-        System.out.println();
+        approxErr = calculateApproxError(x_nPlus1, x_n);
+        trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
-        System.out.printf("%3s%12s%12s%12s%12s%12s%12s%12s\n","n","x_n","f(x_n)","f'(x_n)","x_n+1","f(x_n+1)","f'(x_n+1)","e");
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println(SMALL_BORDER);
+        System.out.println(NEWTON_RAPHSON_METHOD);
+        System.out.println(SMALL_BORDER);
+
+        System.out.printf(COL_FORMAT,"n","x_n","f(x_n)","f'(x_n)","x_n+1","f(x_n+1)","f'(x_n+1)","approx e","true e");
+        System.out.println(BORDER);
         System.out.printf("%3d", 0);
         System.out.printf("%12.4f", x_n);
         System.out.printf("%12.4f", fx_n);
@@ -167,7 +185,8 @@ public class FindRootUsing
         System.out.printf("%12.4f", x_nPlus1);
         System.out.printf("%12.4f", fx_nPlus1);
         System.out.printf("%12.4f", fx_nPlus1_Not);
-        System.out.printf("%12s\n","N/A");
+        System.out.printf("%12.4f", approxErr);
+        System.out.printf("%12.4f\n", trueErr);
 
         for(int i = 0; i < MAX_ITERATIONS; i++)
         {
@@ -179,7 +198,8 @@ public class FindRootUsing
             fx_nPlus1 = Equation_(x_nPlus1,equation);
             fx_nPlus1_Not = Equation_(x_nPlus1,equation+100);
 
-            e = calculateError(x_nPlus1, x_n);
+            approxErr = calculateApproxError(x_nPlus1, x_n);
+            trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
             System.out.printf("%3d", i+1);
             System.out.printf("%12.4f", x_n);
@@ -188,22 +208,22 @@ public class FindRootUsing
             System.out.printf("%12.4f", x_nPlus1);
             System.out.printf("%12.4f", fx_nPlus1);
             System.out.printf("%12.4f", fx_nPlus1_Not);
-            System.out.printf("%12.4f\n", e);
+            System.out.printf("%12.4f", approxErr);
+            System.out.printf("%12.4f\n", trueErr);
 
-            if(e < 0.01)
+            if(approxErr < ERROR)
             {
                 break;
             }
         }
     }
 
-    public static void Secant(double x_0, double x_1, int equation)
+    public static void Secant(double x_0, double x_1, int equation, double trueRoot)
     {
-        final int MAX_ITERATIONS = 100;
         double x_nMinus1, fx_nMinus1;
         double x_n, fx_n;
         double x_nPlus1, fx_nPlus1;
-        double e;
+        double approxErr, trueErr;
 
         x_nMinus1 = x_0;
         fx_nMinus1 = Equation_(x_nMinus1,equation);
@@ -214,13 +234,15 @@ public class FindRootUsing
         x_nPlus1 = calculateX_nPlus1_Secant(x_n, fx_n, x_nMinus1, fx_nMinus1);
         fx_nPlus1 = Equation_(x_nPlus1,equation);
 
-        System.out.println("****************************************************");
-        System.out.println("                   SECANT METHOD");
-        System.out.println("****************************************************");
-        System.out.println();
+        approxErr = calculateApproxError(x_nPlus1, x_n);
+        trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
-        System.out.printf("%3s%12s%12s%12s%12s%12s%12s%12s\n","n","x_n-1","f(x_n-1)","x_n","f(x_n)","x_n+1","f(x_n+1)","e");
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println(SMALL_BORDER);
+        System.out.println(SECANT_METHOD);
+        System.out.println(SMALL_BORDER);
+
+        System.out.printf(COL_FORMAT,"n","x_n-1","f(x_n-1)","x_n","f(x_n)","x_n+1","f(x_n+1)","approx e","true e");
+        System.out.println(BORDER);
         System.out.printf("%3d", 0);
         System.out.printf("%12.4f", x_nMinus1);
         System.out.printf("%12.4f", fx_nMinus1);
@@ -228,7 +250,8 @@ public class FindRootUsing
         System.out.printf("%12.4f", fx_n);
         System.out.printf("%12.4f", x_nPlus1);
         System.out.printf("%12.4f", fx_nPlus1);
-        System.out.printf("%12s\n","N/A");
+        System.out.printf("%12.4f", approxErr);
+        System.out.printf("%12.4f\n", trueErr);
 
         for(int i = 0; i < MAX_ITERATIONS; i++)
         {
@@ -241,7 +264,8 @@ public class FindRootUsing
             x_nPlus1 = calculateX_nPlus1_Secant(x_n,fx_n,x_nMinus1,fx_nMinus1);
             fx_nPlus1 = Equation_(x_nPlus1,equation);
 
-            e = calculateError(x_nPlus1, x_n);
+            approxErr = calculateApproxError(x_nPlus1, x_n);
+            trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
             System.out.printf("%3d", i+1);
             System.out.printf("%12.4f", x_nMinus1);
@@ -250,28 +274,22 @@ public class FindRootUsing
             System.out.printf("%12.4f", fx_n);
             System.out.printf("%12.4f", x_nPlus1);
             System.out.printf("%12.4f", fx_nPlus1);
-            System.out.printf("%12.4f\n", e);
+            System.out.printf("%12.4f", approxErr);
+            System.out.printf("%12.4f\n", trueErr);
 
-            if(e < 0.01)
+            if(approxErr < ERROR)
             {
                 break;
             }
         }
     }
 
-    public static void SecantModified(double x, double delta, int equation)
+    public static void SecantModified(double x, double delta, int equation, double trueRoot)
     {
-        final int MAX_ITERATIONS = 6;
-
-        double x_n;
-        double fx_n;
-        double d;
-        double dPlusx;
-        double fdPlusx;
-        double x_nPlus1;
-        double fx_nPlus1;
-        double e;
-        double xPrev;
+        double x_n, fx_n;
+        double d, dPlusx, fdPlusx;
+        double x_nPlus1, fx_nPlus1;
+        double approxErr, trueErr;
 
         x_n = x;
         fx_n = Equation_(x_n,equation);
@@ -283,13 +301,15 @@ public class FindRootUsing
         x_nPlus1 = calculateX_nPlus1_SecantModified(x_n,fx_n,fdPlusx,d);
         fx_nPlus1 = Equation_(x_nPlus1,equation);
 
-        System.out.println("****************************************************");
-        System.out.println("              MODIFIED SECANT METHOD");
-        System.out.println("****************************************************");
-        System.out.println();
+        approxErr = calculateApproxError(x_nPlus1, x_n);
+        trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
-        System.out.printf("%3s%12s%12s%12s%12s%12s%12s%12s\n","n","x_n","f(x_n)","d","d + x_n","f(d + x_n)","x_n+1","e");
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println(SMALL_BORDER);
+        System.out.println(MODIFIED_SECANT_METHOD);
+        System.out.println(SMALL_BORDER);
+
+        System.out.printf(COL_FORMAT,"n","x_n","f(x_n)","d","d + x_n","f(d + x_n)","x_n+1","approx e","true e");
+        System.out.println(BORDER);
         System.out.printf("%3d", 0);
         System.out.printf("%12.4f", x_n);
         System.out.printf("%12.4f", fx_n);
@@ -297,7 +317,8 @@ public class FindRootUsing
         System.out.printf("%12.4f", dPlusx);
         System.out.printf("%12.4f", fdPlusx);
         System.out.printf("%12.4f", x_nPlus1);
-        System.out.printf("%12s\n","N/A");
+        System.out.printf("%12.4f", approxErr);
+        System.out.printf("%12.4f\n", trueErr);
 
         for(int i = 0; i < MAX_ITERATIONS; i++)
         {
@@ -311,7 +332,8 @@ public class FindRootUsing
             x_nPlus1 = calculateX_nPlus1_SecantModified(x_n,fx_n,fdPlusx,d);
             fx_nPlus1 = Equation_(x_nPlus1,equation);
 
-            e = calculateError(x_nPlus1, x_n);
+            approxErr = calculateApproxError(x_nPlus1, x_n);
+            trueErr = calculateTrueError(trueRoot, x_nPlus1);
 
             System.out.printf("%3d", i+1);
             System.out.printf("%12.4f", x_n);
@@ -320,9 +342,10 @@ public class FindRootUsing
             System.out.printf("%12.4f", dPlusx);
             System.out.printf("%12.4f", fdPlusx);
             System.out.printf("%12.4f", x_nPlus1);
-            System.out.printf("%12.4f\n", e);
+            System.out.printf("%12.4f", approxErr);
+            System.out.printf("%12.4f\n", trueErr);
 
-            if(e < 0.01)
+            if(approxErr < ERROR)
             {
                 break;
             }

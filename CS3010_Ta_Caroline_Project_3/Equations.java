@@ -56,15 +56,21 @@ public class Equations
 
     static double Equation0(double x)
     {
-        // 9x^4 + 18x^3 + 38x^2 - 57x + 14
-        return 9*Math.pow(x,4) + 18*Math.pow(x,3) + 38*Math.pow(x,2) - 57*x + 14;
+//        // 9x^4 + 18x^3 + 38x^2 - 57x + 14
+//        return 9*Math.pow(x,4) + 18*Math.pow(x,3) + 38*Math.pow(x,2) - 57*x + 14;
+
+        // x^4 - 8x^3 - 35x^2 + 450x - 1001 = 0
+        return Math.pow(x,4) - 8*Math.pow(x,3) - 35*Math.pow(x,2) + 450*x - 1001;
     }
 
     static double Equation100(double x)
     {
         // 9x^4 + 18x^3 + 38x^2 - 57x + 14
         // 36x^3 + 54x^2 + 76x - 57
-        return 36*Math.pow(x,3) + 54*Math.pow(x,2) + 76*x - 57;
+//        return 36*Math.pow(x,3) + 54*Math.pow(x,2) + 76*x - 57;
+
+        // 4x^3 - 24x^2 - 70x + 450
+        return 4*Math.pow(x,3) - 24*Math.pow(x,2) - 70*x + 450;
     }
 
     static double Equation1(double x)
@@ -95,15 +101,14 @@ public class Equations
 
     static double Equation3(double x)
     {
-        // x^4 + 2x^3 - 7x^2 + 3
-        return Math.pow(x,4) + 2*Math.pow(x,3) - 7*Math.pow(x,2) + 3;
+        // 2x^3 - 9x^2 + 12x + 15
+        return 2*Math.pow(x,3) - 9*Math.pow(x,2) + 12*x + 15;
     }
 
     static double Equation103(double x)
     {
-        // x^4 + 2x^3 - 7x^2 + 3
-        // 4x^3 + 6x^2 - 14x
-        return 4*Math.pow(x,3) + 6*Math.pow(x,2) - 14*x;
+        // -36x^3 + 6x^2 + 12
+        return 6*Math.pow(x,2) - 18*x + 12;
     }
 
     static double Equation4(double x)
@@ -153,8 +158,13 @@ public class Equations
         return x_n - ( d * fx_n / (fdPlusx - fx_n)) ;
     }
 
-    static double calculateError(double c_n, double c_nMinus1)
+    static double calculateApproxError(double c_current, double c_previous)
     {
-        return Math.abs((c_n - c_nMinus1)/c_n);
+        return Math.abs((c_current - c_previous)/c_current);
+    }
+
+    static double calculateTrueError(double trueRoot, double c_n)
+    {
+        return Math.abs(trueRoot - c_n);
     }
 }

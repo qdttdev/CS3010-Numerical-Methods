@@ -1,13 +1,19 @@
+/*******************************************************************************
+ * Name:		Caroline Ta
+ * ID:			014 939 652
+ * Date:		10.11.2020
+ * Class:		CS3010.01 - Numerical Methods
+ * Assignment:	Programming Project 3 - Finding Roots with 5 Numerical Methods
+ *******************************************************************************/
 package com.company;
 
-import static com.company.Equations.*;
 import static com.company.FindRootUsing.*;
 
 public class Main {
 
     public static void main(String[] args)
     {
-        final String BORDER = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
+        final String BORDER = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
         final String EQ_0 = "Equation: f(x) = 9x^4 + 18x^3 + 38x^2 - 57x + 14";
         final String EQ_1 = "Equation: f(x) = 2x^3 - 11.7x^2 + 17.7x - 5";
         final String EQ_2 = "Equation: f(x) = x + 10 - xcosh(50/x)";
@@ -15,63 +21,83 @@ public class Main {
         final String EQ_4 = "Equation: f(x) = x^5 + x^3 + 3";
         final String EQ_5 = "Equation: f(x) = e^-x - x";
 
-//        System.out.println();
-//        System.out.println(BORDER);
-//        System.out.println("                     " + EQ_0);
-//        System.out.println(BORDER);
-//        System.out.println();
-//        Bisection(0,0.5,0);
-//        System.out.println();
-//        FalsePosition(0,0.5,0);
-//        System.out.println();
-//        NewtonRaphson(0.5, 0);
-//        System.out.println();
-//        Secant(0.3,0.4,0);
+        final double TRUE_ROOT_1_EQ_1 = 0.36509;
+        final double TRUE_ROOT_2_EQ_1 = 1.92174;
+        final double TRUE_ROOT_3_EQ_1 = 3.56316;
+        final double TRUE_ROOT_EQ_2 = 126.632;
 
         System.out.println();
         System.out.println(BORDER);
         System.out.println("                        " + EQ_1);
         System.out.println(BORDER);
         System.out.println();
-        Bisection(0,1,1);
+
+        System.out.println("\tConsider true root of this equation to be x_1 = " + TRUE_ROOT_1_EQ_1 + "\n");
+        Bisection(0,1,1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        FalsePosition(0,1,1);
+        FalsePosition(0,1,1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        NewtonRaphson(0.5, 1);
+        NewtonRaphson(0.5, 1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        Secant(0,1,1);
+        Secant(0,0.5,1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        SecantModified(0.5,0.01,1);
+        SecantModified(0.5,0.01,1, TRUE_ROOT_1_EQ_1);
+
+        System.out.println();
+        System.out.println("\tConsider true root of this equation to be x_2 = " + TRUE_ROOT_2_EQ_1 + "\n");
+        Bisection(1,2,1, TRUE_ROOT_2_EQ_1);
+        System.out.println();
+        FalsePosition(1,1.5,1, TRUE_ROOT_2_EQ_1);
+        System.out.println();
+        NewtonRaphson(1.5, 1, TRUE_ROOT_2_EQ_1);
+        System.out.println();
+        Secant(1,1.5,1, TRUE_ROOT_2_EQ_1);
+        System.out.println();
+        SecantModified(1.5,0.01,1, TRUE_ROOT_2_EQ_1);
+
+        System.out.println();
+        System.out.println("\tConsider true root of this equation to be x_3 = " + TRUE_ROOT_3_EQ_1 + "\n");
+        Bisection(3.5,4,1, TRUE_ROOT_3_EQ_1);
+        System.out.println();
+        FalsePosition(3,4,1, TRUE_ROOT_3_EQ_1);
+        System.out.println();
+        NewtonRaphson(3.5, 1, TRUE_ROOT_3_EQ_1);
+        System.out.println();
+        Secant(3,3.5,1, TRUE_ROOT_3_EQ_1);
+        System.out.println();
+        SecantModified(3.5,0.01,1, TRUE_ROOT_3_EQ_1);
+
 
         System.out.println();
         System.out.println(BORDER);
         System.out.println("                         " + EQ_2);
         System.out.println(BORDER);
         System.out.println();
-        Bisection(126,127,2);
+        System.out.println("\tConsider true root of this equation to be: " + TRUE_ROOT_EQ_2 + "\n");
+        Bisection(123,127,2, TRUE_ROOT_EQ_2);
         System.out.println();
-        FalsePosition(126,127,2);
+        FalsePosition(123,127,2, TRUE_ROOT_EQ_2);
         System.out.println();
-        NewtonRaphson(126,2);
+        NewtonRaphson(123,2, TRUE_ROOT_EQ_2);
         System.out.println();
-        Secant(126,127,2);
+        Secant(123,127,2, TRUE_ROOT_EQ_2);
         System.out.println();
-        SecantModified(126,0.01,2);
+        SecantModified(123,0.01,2, TRUE_ROOT_EQ_2);
 
 //        System.out.println();
 //        System.out.println(BORDER);
 //        System.out.println("                        " + EQ_3);
 //        System.out.println(BORDER);
 //        System.out.println();
-//        NewtonRaphson(0.5, 3);
-
+//        NewtonRaphson(1.5, 3);
+//
 //        System.out.println();
 //        System.out.println(BORDER);
 //        System.out.println("                            " + EQ_4);
 //        System.out.println(BORDER);
 //        System.out.println();
 //        Secant(1,-1,4);
-
+//
 //        System.out.println();
 //        System.out.println(BORDER);
 //        System.out.println("                        " + EQ_5);
