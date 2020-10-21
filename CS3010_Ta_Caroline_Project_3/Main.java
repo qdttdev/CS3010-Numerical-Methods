@@ -37,21 +37,21 @@ public class Main {
         System.out.println();
         FalsePosition(0,1,1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        NewtonRaphson(0.5, 1, TRUE_ROOT_1_EQ_1);
+        NewtonRaphson(0, 1, TRUE_ROOT_1_EQ_1);
         System.out.println();
-        Secant(0,0.5,1, TRUE_ROOT_1_EQ_1);
+        Secant(0,1,1, TRUE_ROOT_1_EQ_1);
         System.out.println();
         SecantModified(0.5,0.01,1, TRUE_ROOT_1_EQ_1);
 
         System.out.println();
         System.out.println("\tConsider true root of this equation to be x_2 = " + TRUE_ROOT_2_EQ_1 + "\n");
-        Bisection(1,2,1, TRUE_ROOT_2_EQ_1);
+        Bisection(1.5,2,1, TRUE_ROOT_2_EQ_1);
         System.out.println();
-        FalsePosition(1,1.5,1, TRUE_ROOT_2_EQ_1);
+        FalsePosition(1.5,2,1, TRUE_ROOT_2_EQ_1);
         System.out.println();
         NewtonRaphson(1.5, 1, TRUE_ROOT_2_EQ_1);
         System.out.println();
-        Secant(1,1.5,1, TRUE_ROOT_2_EQ_1);
+        Secant(1.5,2,1, TRUE_ROOT_2_EQ_1);
         System.out.println();
         SecantModified(1.5,0.01,1, TRUE_ROOT_2_EQ_1);
 
@@ -59,11 +59,11 @@ public class Main {
         System.out.println("\tConsider true root of this equation to be x_3 = " + TRUE_ROOT_3_EQ_1 + "\n");
         Bisection(3.5,4,1, TRUE_ROOT_3_EQ_1);
         System.out.println();
-        FalsePosition(3,4,1, TRUE_ROOT_3_EQ_1);
+        FalsePosition(3.5,4,1, TRUE_ROOT_3_EQ_1);
         System.out.println();
         NewtonRaphson(3.5, 1, TRUE_ROOT_3_EQ_1);
         System.out.println();
-        Secant(3,3.5,1, TRUE_ROOT_3_EQ_1);
+        Secant(3.5,4,1, TRUE_ROOT_3_EQ_1);
         System.out.println();
         SecantModified(3.5,0.01,1, TRUE_ROOT_3_EQ_1);
 
