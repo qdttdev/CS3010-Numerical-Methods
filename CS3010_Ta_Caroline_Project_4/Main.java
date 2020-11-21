@@ -30,7 +30,7 @@ public class Main
         String[] lineAr;
 
         // PROCESSING
-        File inputFile = new File(INPUT_FILE_1);
+        File inputFile = new File(INPUT_FILE_3);
         Scanner scanner = new Scanner (inputFile);
 
         // Get the first line of input into x[], which contains x values

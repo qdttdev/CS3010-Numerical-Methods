@@ -20,9 +20,13 @@ public class Functions
     static void printDiffTable(double[] x, double[][] y, int n)
     {
         System.out.println();
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
         System.out.println("               DIVIDED DIFFERENCE TABLE");
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
+
+        System.out.println();
+        System.out.printf("%-12s%-12s%-12s%-12s%-12sf[.....]\n","x","f[]","f[,]","f[,,]","f[,,,]");
+        System.out.println("--------------------------------------------------------------------");
         for (int i = 0; i < n; i++)
         {
             System.out.printf("%-10.3f\t", x[i]);
@@ -38,9 +42,9 @@ public class Functions
     static void printIntPoly(double[] x, double[][] y, int n)
     {
         System.out.println();
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
         System.out.println("                INTERPOLATING POLYNOMIAL");
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
         for (int j = 0; j < n; j++)
         {
             System.out.printf("%.3f", y[0][j]);
@@ -103,9 +107,9 @@ public class Functions
 
         System.out.println();
         System.out.println();
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
         System.out.println("                  SIMPLIFIED POLYNOMIAL");
-        System.out.println("--------------------------------------------------------");
+        System.out.println("********************************************************");
         System.out.println(printString(result));
     }
 
