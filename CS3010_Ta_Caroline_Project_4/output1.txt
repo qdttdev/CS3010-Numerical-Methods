@@ -1,0 +1,22 @@
+"C:\Program Files\Java\jdk-14.0.1\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.1.1\lib\idea_rt.jar=60850:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.1.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\ctqdt\IdeaProjects\CS_3010_Project_4\out\production\CS_3010_Project_4 com.company.Main
+
+--------------------------------------------------------
+               DIVIDED DIFFERENCE TABLE
+--------------------------------------------------------
+1.000     	3.000     	0.500     	0.333     	-1.997
+1.500     	3.250     	0.167     	-1.663
+0.000     	3.000     	-0.665
+2.000     	1.670
+
+--------------------------------------------------------
+                INTERPOLATING POLYNOMIAL
+--------------------------------------------------------
+3.000 + 0.500(x-1.0) + 0.333(x-1.0)(x-1.5) + -1.997(x-1.0)(x-1.5)(x)
+
+--------------------------------------------------------
+                  SIMPLIFIED POLYNOMIAL
+--------------------------------------------------------
+-1.997x^3 + 5.325x^2 + -3.328x + 3.000
+
+
+Process finished with exit code 0
