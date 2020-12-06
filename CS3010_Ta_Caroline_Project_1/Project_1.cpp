@@ -225,20 +225,20 @@ int main()
 	// Back substitution
 	for(int i = row-1; i >= 0; i--)
 	{
-		int c = 0;
+		double c = 0;
 		for(int j=i; j <= row-1; j++)
 		{
-			c = c + matrix[i][j] * solution[j];
+			c = c + double(matrix[i][j]) * double(solution[j]);
 		}
 
-		solution[i]=(matrix[i][row]-c)/matrix[i][i];
+		solution[i]= double((matrix[i][row]-c))/double(matrix[i][i]);
 	}
 
 	// Output the solutions
 	cout << "\nThe solution of the matrix:" << endl;
 	for(int i = 0; i < row; i++)
 	{
-		cout << "x" << i+1 << " = " << round(solution[i]) << endl;
+		cout << "x" << i+1 << " = " << solution[i] << endl;
 	}
 
 	cout << "\nThank you for using the program! [Press Enter to Close the Program]\n";
