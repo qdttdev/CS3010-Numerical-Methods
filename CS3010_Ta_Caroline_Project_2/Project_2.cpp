@@ -476,13 +476,13 @@ int main()
 	// Back substitution
 	for(int i = row-1; i >= 0; i--)
 	{
-		int c = 0;
+		double c = 0;
 		for(int j=i; j <= row-1; j++)
 		{
-			c = c + matrix[i][j] * solution[j];
+			c = c + double(matrix[i][j]) * double(solution[j]);
 		}
 
-		solution[i]=(matrix[i][row]-c)/matrix[i][i];
+		solution[i] = double((matrix[i][row]-c))/double(matrix[i][i]);
 	}
 	high_resolution_clock::time_point t6 = high_resolution_clock::now();
 
@@ -490,7 +490,7 @@ int main()
 	cout << "\nThe solution of the matrix:" << endl;
 	for(int i = 0; i < row; i++)
 	{
-		cout << "x" << i+1 << " = " << round(solution[i]) << endl;
+		cout << "x" << i+1 << " = " << solution[i] << endl;
 	}
 
 	auto durationGP = duration_cast<microseconds>(t6 - t5).count();
